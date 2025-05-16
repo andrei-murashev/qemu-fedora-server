@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# ----------------------------------------------------------
-# HELPER FUNCTIONS
-# ----------------------------------------------------------
-
 function backup_file {
   [[ -z $1 ]] && return 1
 
@@ -15,8 +11,6 @@ function backup_file {
 
   mv -v "$1" "$1.bak-$HEX"
 }
-
-# ----------------------------------------------------------
 
 
 
@@ -34,7 +28,7 @@ done
 CHECKSUM_LINK="\
 https://ap.edge.kernel.org\
 $(echo "$QCOW_LINK" \
-  | sed \
+  | sed                           \
   -e 's/.qcow2$//'                \
   -e 's/-Guest-Generic//g'        \
   -e 's/.*\/fedora\//\/fedora\//' \
@@ -47,8 +41,8 @@ curl -sSLO "$CHECKSUM_LINK"
 CHECKSUM_FILE=$(echo "$CHECKSUM_LINK" | sed 's!.*/!!')
 
 CHECKSUM_EXPECTED=$(cat "$CHECKSUM_FILE" | grep '^SHA256' | awk '{print $NF}')
-CHECKSUM_CURRENT=$(sha256sum 'Fedora-Server'*'.qcow2' 2> /dev/null \
-  | awk '{print $1}' || echo 0)
+CHECKSUM_CURRENT=$(sha512sum 'Fedora-Server-Guest-Generic'*'.qcow2' \
+  2> /dev/null | awk '{print $1}' || echo 0)
 
 [[ "$CHECKSUM_CURRENT" == "$CHECKSUM_EXPECTED" ]]
 CHECKSUM_STATUS="$?"
@@ -57,7 +51,7 @@ if [[ "$CHECKSUM_STATUS" != 0 ]]; then
   read -p "Download latest image? [y/N]: " ans
 
   if [[ "${ans^^}" == 'Y' || "${ans^^}" == 'YES' ]]; then
-    QCOW_FILE=$(ls -a | grep '.qcow2$' | grep 'Fedora-Server')
+    QCOW_FILE=$(ls -a | grep '.qcow2$' | grep 'Fedora-Server-Guest-Generic')
     backup_file "$QCOW_FILE" || true
     curl -SLO "$QCOW_LINK"
 
