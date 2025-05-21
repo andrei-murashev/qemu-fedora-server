@@ -1,13 +1,10 @@
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <h1 style="margin: 0;">QEMU Fedora Server (x86_64)</h1>
-  <span style="vertical-align: middle;">
-    <img src="https://img.shields.io/github/stars/andrei-murashev/qemu-fedora-server?style=flat&color=yellow&label=Stars" alt="GitHub Stars" width="100"/>
-  </span>
-</div>
-
-
-<br>
-
+# QEMU Fedora Server (x86_64)
+<img src="https://img.shields.io/github/license/andrei-murashev/qemu-fedora-server?style=flat&color=red&label=License"
+  alt="License" height="25" style="display: inline-block;"/>
+<img src="https://img.shields.io/github/issues/andrei-murashev/qemu-fedora-server?style=flat&color=blue&label=Issues"
+  alt="Issues" height="25" style="display: inline-block;"/>
+<img src="https://img.shields.io/github/stars/andrei-murashev/qemu-fedora-server?style=flat&color=yellow&label=Stars"
+   alt="GitHub Stars" height="25" style="display: inline-block;"/>
 
 A collection of scripts, which are small, simple, and configurable, for setting
 up and running a Fedora Linux Server x86_64 virtual machine using QEMU.
