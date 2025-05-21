@@ -14,6 +14,8 @@ function backup_file {
 
 
 
+
+
 while [[ -z "$QCOW_LINK" ]]; do
   QCOW_LINK=$(
     chromium-browser --headless --disable-gpu --dump-dom                \

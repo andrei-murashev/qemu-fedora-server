@@ -1,6 +1,0 @@
-Uses:
-- bash
-- sed
-- grep
-- awk
-- libguestfs-tools
