@@ -17,6 +17,16 @@ DATE=$(( $(date +%s) / 86400 - 1))
 
 # ------------------------------------------------------------------------------
 
+if [[ -z "$QCOW_NAME" ]]; then
+  echo "QCOW image not found."
+  exit 1
+fi
+
+if [[ ! -f "$QCOW_NAME" ]]; then
+  echo "QCOW image '$QCOW_NAME' not found."
+  exit 1
+fi
+
 qemu-img resize "$QCOW_NAME" "$QCOW_SIZE"
 
 virt-customize -a "$QCOW_NAME" --run-command                            \
