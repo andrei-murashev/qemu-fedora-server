@@ -2,6 +2,7 @@
 set -euo pipefail
 
 
+
 function set_qemu_opts {
   export QCOW_NAME=$(\
     ls -la                                            |
@@ -27,6 +28,8 @@ QCOW_SIZE=20G
 ROOT_HASH=$(mkpasswd --method=yescrypt "$(< rootpw)")
 DATE=$(( $(date +%s) / 86400 - 1))
 # ------------------------------------------------------------------------------
+
+
 
 function main {
   if [[ -z "$QCOW_NAME" ]]; then

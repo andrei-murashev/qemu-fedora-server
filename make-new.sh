@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
+
+
 
 # Makes an additional copy of a file, whose name is the first parameter.
 function backup_file {
