@@ -1,5 +1,4 @@
 #!/bin/bash
-set -euo pipefail
 
 
 
@@ -18,7 +17,7 @@ function backup_file {
 
 
 function main {
-  set -euo pipefail
+  set -o pipefail
 
   # Acquires the download link to the QCOW file.
   # Is done until a link is acquired.
